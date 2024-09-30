@@ -1,11 +1,11 @@
 import Plot from 'react-plotly.js';
 
-const PlotECGDiagram = ({x, y}) => {
+const PlotECGDiagram = ({y}) => {
     return (
         <Plot
         data={[
             {
-                x: x,
+                x: [...Array(y.length).keys().map(item => item + 1)],
                 y: y,
                 mode: 'lines',
                 line: { color: 'blue' },

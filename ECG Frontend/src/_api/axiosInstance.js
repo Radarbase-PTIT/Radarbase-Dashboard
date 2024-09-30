@@ -6,10 +6,15 @@ function buildProtocolScheme() {
     return scheme;
 }
 
+
 const axiosInstance = axios.create({
     baseURL: buildProtocolScheme() + "://" + configs.app.host + "/managementportal/" ,
 })
 
+/**
+ * For authentication in management portal
+ * @type {axios.AxiosInstance}
+ */
 
 const authManagementPortalAxiosInstance = axios.create({
     baseURL: buildProtocolScheme() + "://" + configs.app.host + "/managementportal/api" ,
@@ -18,7 +23,6 @@ const authManagementPortalAxiosInstance = axios.create({
     }
 })
 
-//adding bearer token
 authManagementPortalAxiosInstance.interceptors.request.use((config) => {
     const token = localStorage.getItem("token");
 
@@ -30,11 +34,20 @@ authManagementPortalAxiosInstance.interceptors.request.use((config) => {
     return Promise.reject(error);
 })
 
+/**
+ * For local api access
+ * @type {axios.AxiosInstance}
+ */
+
 const localAxiosInstance = axios.create({
     baseURL: "http://" + configs.app.hostLocal.name + ":" + configs.app.hostLocal.port + "/api/" ,
     headers: {
         Authorization: 'Bearer ' + localStorage.getItem('token')
     }
+})
+
+localAxiosInstance.interceptors.response.use((response) => {
+    return response.data;
 })
 
 export { axiosInstance, authManagementPortalAxiosInstance, localAxiosInstance }

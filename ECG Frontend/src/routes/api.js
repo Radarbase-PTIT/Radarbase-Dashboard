@@ -5,14 +5,9 @@ const api = {
     subjectsFromProject: '/projects/:project/subjects',
     
     ecgData: '/ecg-data',
-    medicalTest: {
-        list: '/medical_tests/:subject_id',
-        create: '/medical_tests',
-        view: '/medical_tests/:test_id',
-        store: '/medical_tests',
-        viewMedicalBySubject: '/medical_tests/subject_id/:subject_id',
-        update: '/medical_tests/:test_id',
-        delete: '/medical_tests/:test_id'
+    measurements: {
+        list: "/android_polar_h10_ecg/patients/:patientId/aggregate-measurements",
+        show: "/android_polar_h10_ecg/patients/:patientId/measurements/:measurement"
     }
 }
 

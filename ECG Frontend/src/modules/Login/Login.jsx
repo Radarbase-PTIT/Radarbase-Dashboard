@@ -27,9 +27,9 @@ function Login() {
       ...form,
       grant_type: 'password',
     }
-    var form_data = new FormData();
+    let form_data = new FormData();
 
-    for ( var key in item ) {
+    for ( let key in item ) {
         form_data.append(key, item[key]);
     }
 

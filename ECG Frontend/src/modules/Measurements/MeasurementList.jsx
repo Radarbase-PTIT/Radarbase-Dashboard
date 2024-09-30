@@ -1,12 +1,12 @@
 import React, { useEffect } from "react"
 
-import MedicalTestList from "../../components/MedicalTestList";
-import { authManagementPortalAxiosInstance } from "../../_api/axiosInstance"
+import { authManagementPortalAxiosInstance } from "../../_api/axiosInstance.js"
 import insertUrlParams from 'inserturlparams'
-import routes from '../../routes'
+import routes from '../../routes/index.js'
 import { useNavigate } from "react-router-dom";
+import Measurements from "../../components/MeasurementsTable.jsx";
 
-const AssignECG = () => {
+const MeasurementList = () => {
 
     const [projects, setProjects] = React.useState([]);
 
@@ -14,7 +14,7 @@ const AssignECG = () => {
 
     const [subjects, setSubjects] = React.useState([])
 
-    const [subjectId, setSubjectId] = React.useState("") 
+    const [subjectId, setSubjectId] = React.useState("173bc5f9-5a1b-48c0-a3e1-75ad6623e5d1")
 
     const [params, setParams] = React.useState({})
 
@@ -121,9 +121,9 @@ const AssignECG = () => {
             </div>
 
             <hr/>
-            <MedicalTestList key={Date.now()} subjectId={subjectId}/>   
+            <Measurements key={Date.now()} subjectId={subjectId}/>
         </>
     )
 }
 
-export default AssignECG
+export default MeasurementList

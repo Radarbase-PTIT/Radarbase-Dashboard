@@ -1,11 +1,13 @@
 const mongoose = require('mongoose')
-const config = require('../../configs/database')
+const configs = require('../../configs/index')
 
-const {user, password, host,port,database } = config.mongodb
+const {user, password, host,port,database } = configs.database[configs.database.default].mongodb
+
 let mongoInstance;
 
 try {
-    mongoInstance = mongoose.createConnection(`mongodb://${user}:${password}@${host}:${port}/${database}?authMechanism=DEFAULT`)
+    const connectionString = `mongodb://${user}:${password}@${host}:${port}/${database}?authSource=admin`
+    mongoInstance = mongoose.createConnection(connectionString)
 } catch (e) {
     console.error("Mongodb connection error", e.message);
 }
