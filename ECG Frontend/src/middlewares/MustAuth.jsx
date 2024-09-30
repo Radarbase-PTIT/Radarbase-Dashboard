@@ -1,4 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import routes from "../routes/index.js";
 
 // HOC to check for access token
 const MustAuth = () => {
@@ -6,7 +7,7 @@ const MustAuth = () => {
 
     if (!accessToken) {
         // Redirect to login page if no access token is found
-        return <Navigate to="/login" />
+        return <Navigate to={routes.browser.login} />
     }
 
     // If access token exists, render the component

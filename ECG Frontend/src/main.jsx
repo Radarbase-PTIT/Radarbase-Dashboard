@@ -15,7 +15,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    // element: <MustAuth />,
+    element: <MustAuth />,
     children: [
       {
         path: routes.browser.measurements.viewDetail,
