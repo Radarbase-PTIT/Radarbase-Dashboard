@@ -25,7 +25,7 @@ const PlotECGDiagram = ({params}) => {
             );
 
             if (response.success) {
-                setLoading(false);
+                console.log(response.data)
                 setMeasurementData(response.data);
                 //check need to update or not
                 setMeasurementEcgLength(prevState => {
@@ -36,7 +36,7 @@ const PlotECGDiagram = ({params}) => {
                         return response.data.heartRates.length 
                     }
                 })
-
+                setLoading(false);
             }
         };
 
@@ -50,7 +50,6 @@ const PlotECGDiagram = ({params}) => {
 
     }, [needUpdateInterval]);
     
-    console.log(measurementData)
 
     return (
         <>
