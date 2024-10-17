@@ -70,7 +70,9 @@ const PlotECGDiagram = ({params}) => {
         <>
         {loading ? <div>Loading...</div> :
         <>
-            <p>Heart rate problem: {heartRateNormal ? <span class="badge badge-success">No problem</span>:<span class="badge badge-danger">Has problem</span> }</p>
+            <p>Heart rate problem: {heartRateNormal ? 
+            <span className="badge text-bg-success">No problem</span> :
+            <span className="badge text-bg-danger">Has problem</span> }</p>
             <Plot
                 data={[
                     {
