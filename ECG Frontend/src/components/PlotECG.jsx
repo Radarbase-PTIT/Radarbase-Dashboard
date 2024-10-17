@@ -8,7 +8,10 @@ import routes from '../routes';
 // eslint-disable-next-line react/prop-types
 const PlotECGDiagram = ({params}) => {
 
-    const [measurementData, setMeasurementData] = useState({})
+    const [measurementData, setMeasurementData] = useState({
+        ecg: [],
+        heartRates: []
+    })
 
     const [loading, setLoading] = useState(false);
 
@@ -25,7 +28,6 @@ const PlotECGDiagram = ({params}) => {
             );
 
             if (response.success) {
-                console.log(response.data)
                 setMeasurementData(response.data);
                 //check need to update or not
                 setMeasurementEcgLength(prevState => {
