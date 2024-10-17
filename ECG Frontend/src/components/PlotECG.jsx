@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import Plot from 'react-plotly.js';
 import insertUrlParams from 'inserturlparams';
-import { localAxiosInstance } from '../../_api/axiosInstance';
+import { localAxiosInstance } from '../_api/axiosInstance';
 import routes from '../routes';
 
 // eslint-disable-next-line react/prop-types
