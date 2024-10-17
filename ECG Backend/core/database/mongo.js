@@ -5,7 +5,7 @@ const {user, password, host,port,database } = configs.database[configs.database.
 
 let mongoInstance;
 const connectionString = `mongodb://${user}:${password}@${host}:${port}/${database}?authSource=admin`
-console.log(connectionString);
+
 try {
     mongoInstance = mongoose.createConnection(connectionString)
 } catch (e) {
