@@ -5,7 +5,6 @@ import insertUrlParams from 'inserturlparams';
 import { localAxiosInstance } from '../_api/axiosInstance';
 import routes from '../routes';
 
-
 // ======= RANDOM CHECK =======
 function randomTestHeartRateArrythmia() {
     const randomValue = Math.random();
@@ -111,8 +110,8 @@ const PlotECGDiagram = ({params}) => {
                 config={{ responsive: true }}
                 style={{ width: "100%", height: "850px" }}
                 />
-                }
-            </>
+                </>
+            }
         </>
     )
 }
