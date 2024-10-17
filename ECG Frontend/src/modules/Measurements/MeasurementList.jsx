@@ -10,11 +10,11 @@ const MeasurementList = () => {
 
     const [projects, setProjects] = React.useState([]);
 
-    const [selectedProject, setSelectedProject] = React.useState("")
+    const [projectId, setProjectId] = React.useState("")
 
     const [subjects, setSubjects] = React.useState([])
 
-    const [subjectId, setSubjectId] = React.useState("173bc5f9-5a1b-48c0-a3e1-75ad6623e5d1")
+    const [subjectId, setSubjectId] = React.useState("")
 
     const [params, setParams] = React.useState({})
 
@@ -56,13 +56,13 @@ const MeasurementList = () => {
     // Select project
     const handleChooseProject = async (e) => {
         if (e.target.value === "") {
-            setSelectedProject("")
+            setProjectId("")
             setSubjects([])
             setSubjectId("")
             return;
         }
         const res = await authManagementPortalAxiosInstance.get(insertUrlParams(routes.api.subjectsFromProject, {project: e.target.value}))
-        setSelectedProject(e.target.value)
+        setProjectId(e.target.value)
         setParams({
             ...params,
             project_id: e.target.value
@@ -111,9 +111,9 @@ const MeasurementList = () => {
 
                     <div className="row">
                         <select className="form-select" onChange={(e) => handleChangeSubject(e)} onBlur={(e) => handleChangeSubject(e)}>
-                            {selectedProject !== "" && <option value="">-- Select subject --</option>}
+                            {projectId !== "" && <option value="">-- Select subject --</option>}
                             {subjects.map(subject => (
-                                <option key={subject.id} value={subject.id}>{subject.externalId}</option>
+                                <option key={subject.id} value={subject.login}>{subject.externalId}</option>
                             ))}
                         </select>
                     </div>
@@ -121,7 +121,7 @@ const MeasurementList = () => {
             </div>
 
             <hr/>
-            <Measurements key={Date.now()} subjectId={subjectId}/>
+            <Measurements key={Date.now()} projectId={projectId} subjectId={subjectId}/>
         </>
     )
 }

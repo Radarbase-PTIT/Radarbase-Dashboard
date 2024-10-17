@@ -6,7 +6,7 @@ import routes from '../routes';
 import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
-const MeasurementsTable = ({subjectId}) => {
+const MeasurementsTable = ({projectId, subjectId}) => {
     const [measurements, setMeasurements] = useState([]);
 
     const navigate = useNavigate()
@@ -54,7 +54,7 @@ const MeasurementsTable = ({subjectId}) => {
                                     onClick={() => navigate(insertUrlParams(
                                         routes.browser.measurements.viewDetail,
                                         {patientId: subjectId, measurement}
-                                    ))}>
+                                    ), {state: {projectId, subjectId}})}>
                                     View
                                 </button>
                                 <button
