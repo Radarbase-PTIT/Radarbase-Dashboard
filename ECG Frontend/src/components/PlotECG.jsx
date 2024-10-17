@@ -8,7 +8,7 @@ import routes from '../routes';
 // ======= RANDOM CHECK =======
 function randomTestIsNormalHeartRate() {
     const randomValue = Math.random();
-    if (randomValue < 0.95) {
+    if (randomValue < 0.9) {
         return true;
     } else {
         return false;
