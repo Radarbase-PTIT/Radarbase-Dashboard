@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 
 import PlotECGDiagram from '../../components/PlotECG';
 import insertUrlParams from 'inserturlparams';
 import { localAxiosInstance } from '../../_api/axiosInstance';
 import routes from '../../routes';
-import {useLocation, useNavigate, useParams} from 'react-router-dom';
-
 
 const MeasurementDetail = () => {
 
@@ -40,7 +39,7 @@ const MeasurementDetail = () => {
                        setNeedUpdateInterval(false)
                        return prevState;
                    } else {
-                       return response.data.heartRates.length
+                       return response.data.heartRates.length 
                    }
                })
 
