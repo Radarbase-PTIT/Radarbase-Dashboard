@@ -6,12 +6,12 @@ import { localAxiosInstance } from '../_api/axiosInstance';
 import routes from '../routes';
 
 // ======= RANDOM CHECK =======
-function randomTestHeartRateArrythmia() {
+function randomTestIsNormalHeartRate() {
     const randomValue = Math.random();
     if (randomValue < 0.95) {
-        return false;
-    } else {
         return true;
+    } else {
+        return false;
     }
 }
     
@@ -56,7 +56,7 @@ const PlotECGDiagram = ({params}) => {
 
         if (needUpdateInterval) { // Only set interval if updates are needed
             const updateInterval = setInterval(() => {
-                setHeartRateNormal(randomTestHeartRateArrythmia())
+                setHeartRateNormal(randomTestIsNormalHeartRate())
                 fetchTest();
             }, 1500);
 
