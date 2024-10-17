@@ -50,6 +50,8 @@ const PlotECGDiagram = ({params}) => {
 
     }, [needUpdateInterval]);
     
+    console.log(measurementData)
+
     return (
         <>
         {loading ? <div>Loading...</div> :
