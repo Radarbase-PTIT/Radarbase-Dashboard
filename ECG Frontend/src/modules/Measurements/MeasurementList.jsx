@@ -1,10 +1,10 @@
 import React, { useEffect } from "react"
 
+import Measurements from "../../components/MeasurementsTable.jsx";
 import { authManagementPortalAxiosInstance } from "../../_api/axiosInstance.js"
 import insertUrlParams from 'inserturlparams'
 import routes from '../../routes/index.js'
 import { useNavigate } from "react-router-dom";
-import Measurements from "../../components/MeasurementsTable.jsx";
 
 const MeasurementList = () => {
 
@@ -14,7 +14,7 @@ const MeasurementList = () => {
 
     const [subjects, setSubjects] = React.useState([])
 
-    const [subjectId, setSubjectId] = React.useState("173bc5f9-5a1b-48c0-a3e1-75ad6623e5d1")
+    const [subjectId, setSubjectId] = React.useState("")
 
     const [params, setParams] = React.useState({})
 
@@ -113,7 +113,7 @@ const MeasurementList = () => {
                         <select className="form-select" onChange={(e) => handleChangeSubject(e)} onBlur={(e) => handleChangeSubject(e)}>
                             {selectedProject !== "" && <option value="">-- Select subject --</option>}
                             {subjects.map(subject => (
-                                <option key={subject.id} value={subject.id}>{subject.externalId}</option>
+                                <option key={subject.id} value={subject.login}>{subject.externalId}</option>
                             ))}
                         </select>
                     </div>

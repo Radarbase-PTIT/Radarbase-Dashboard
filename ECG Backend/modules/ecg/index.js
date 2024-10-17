@@ -28,13 +28,13 @@ androidPolarH10EcgRouter.get('/patients/:patientId/aggregate-measurements', asyn
         return item.measurementTimes;
     })
 
-   return res.status(200).send({
-       success: true,
-       data: {
-           measurementTimes: measurementTimesArray
-       },
-       message: 'OK'
-   })
+    return res.status(200).send({
+        success: true,
+        data: {
+            measurementTimes: measurementTimesArray
+        },
+        message: 'OK'
+    })
 })
 
 androidPolarH10EcgRouter.get('/patients/:patientId/measurements/:measurements', async (req, res) => {
