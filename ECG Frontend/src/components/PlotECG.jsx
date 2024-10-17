@@ -5,6 +5,17 @@ import insertUrlParams from 'inserturlparams';
 import { localAxiosInstance } from '../_api/axiosInstance';
 import routes from '../routes';
 
+
+// ======= RANDOM CHECK =======
+function randomTestHeartRateArrythmia() {
+    const randomValue = Math.random();
+    if (randomValue < 0.95) {
+        return false;
+    } else {
+        return true;
+    }
+}
+    
 // eslint-disable-next-line react/prop-types
 const PlotECGDiagram = ({params}) => {
 
@@ -18,6 +29,8 @@ const PlotECGDiagram = ({params}) => {
     const [, setMeasurementEcgLength] = useState(0)
 
     const [needUpdateInterval, setNeedUpdateInterval] = useState(true);
+
+    const [heartRateNormal, setHeartRateNormal] = useState(true);
 
     useEffect(() => {
         const fetchTest = async () => {
@@ -44,6 +57,7 @@ const PlotECGDiagram = ({params}) => {
 
         if (needUpdateInterval) { // Only set interval if updates are needed
             const updateInterval = setInterval(() => {
+                setHeartRateNormal(randomTestHeartRateArrythmia())
                 fetchTest();
             }, 1500);
 
@@ -56,46 +70,49 @@ const PlotECGDiagram = ({params}) => {
     return (
         <>
         {loading ? <div>Loading...</div> :
-        <Plot
-            data={[
-                {
-                    x: [...Array(measurementData.ecg.length).keys().map(item => item + 1)],
-                    y: measurementData.ecg,
-                    mode: 'lines',
-                    line: { color: 'blue' },
-                },
-            ]}
-            layout={{
-                title: 'ECG Signal',
-                xaxis: {
-                    rangeslider: { visible: true },  // Enable the range slider
-                    rangeselector: {               // Add range selector buttons
-                        buttons: [
-                            {
-                                count: 1,
-                                label: '1s',
-                                step: 'second',
-                                stepmode: 'backward',
-                            },
-                            {
-                                count: 10,
-                                label: '10s',
-                                step: 'second',
-                                stepmode: 'backward',
-                            },
-                            { step: 'all', label: 'All' },
-                        ],
+        <>
+            <p>Heart rate problem: {heartRateNormal ? <span class="badge badge-success">No problem</span>:<span class="badge badge-danger">Has problem</span> }</p>
+            <Plot
+                data={[
+                    {
+                        x: [...Array(measurementData.ecg.length).keys().map(item => item + 1)],
+                        y: measurementData.ecg,
+                        mode: 'lines',
+                        line: { color: 'blue' },
                     },
-                },
-                yaxis: {
-                    fixedrange: false,  // Allow zooming on the Y-axis
-                },
-                autosize: true,
-            }}
-            config={{ responsive: true }}
-            style={{ width: "100%", height: "850px" }}
-            />
-            }
+                ]}
+                layout={{
+                    title: 'ECG Signal',
+                    xaxis: {
+                        rangeslider: { visible: true },  // Enable the range slider
+                        rangeselector: {               // Add range selector buttons
+                            buttons: [
+                                {
+                                    count: 1,
+                                    label: '1s',
+                                    step: 'second',
+                                    stepmode: 'backward',
+                                },
+                                {
+                                    count: 10,
+                                    label: '10s',
+                                    step: 'second',
+                                    stepmode: 'backward',
+                                },
+                                { step: 'all', label: 'All' },
+                            ],
+                        },
+                    },
+                    yaxis: {
+                        fixedrange: false,  // Allow zooming on the Y-axis
+                    },
+                    autosize: true,
+                }}
+                config={{ responsive: true }}
+                style={{ width: "100%", height: "850px" }}
+                />
+                }
+            </>
         </>
     )
 }
