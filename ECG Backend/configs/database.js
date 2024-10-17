@@ -1,7 +1,9 @@
-require('dotenv').config()
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, './../.env') })
+
 
 const database = {
-    default: process.env.MONGODB_ENVIRONMENT || 'local',
+    default: process.env.APP_ENV || 'local',
     vmware: {
         postgresql: {
             host: process.env.POSTGRES_HOST || 'localhost',
@@ -13,7 +15,7 @@ const database = {
 
         mongodb: {
             host: process.env.MONGO_HOST || 'localhost',
-            user: process.env.MONGO_USERNAME || 'username',
+            user: process.env.MONGO_USER || 'username',
             password: process.env.MONGO_PASSWORD || 'password',
             database: process.env.MONGO_DB || 'db',
             port: process.env.MONGO_PORT || '27017'

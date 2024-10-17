@@ -1,10 +1,10 @@
 import React, { useEffect } from "react"
 
+import Measurements from "../../components/MeasurementsTable.jsx";
 import { authManagementPortalAxiosInstance } from "../../_api/axiosInstance.js"
 import insertUrlParams from 'inserturlparams'
 import routes from '../../routes/index.js'
 import { useNavigate } from "react-router-dom";
-import Measurements from "../../components/MeasurementsTable.jsx";
 
 const MeasurementList = () => {
 
