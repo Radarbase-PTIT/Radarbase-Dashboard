@@ -3,7 +3,7 @@ require('dotenv').config({ path: path.resolve(__dirname, './../.env') })
 
 
 const database = {
-    default: process.env.MONGODB_ENVIRONMENT || 'local',
+    default: process.env.APP_ENV || 'local',
     vmware: {
         postgresql: {
             host: process.env.POSTGRES_HOST || 'localhost',
