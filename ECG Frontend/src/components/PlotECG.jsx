@@ -77,7 +77,7 @@ const PlotECGDiagram = ({params}) => {
             <Plot
                 data={[
                     {
-                        x: [1],
+                        x: {measurementData.ecg.map((item, index) => index = index+1),
                         y: measurementData.ecg,
                         mode: 'lines',
                         line: { color: 'blue' },
