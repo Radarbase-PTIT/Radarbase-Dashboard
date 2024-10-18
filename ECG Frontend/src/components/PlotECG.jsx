@@ -80,7 +80,7 @@ const PlotECGDiagram = ({params}) => {
                         x: {measurementData.ecg.map((item, index) => index = index+1),
                         y: measurementData.ecg,
                         mode: 'lines',
-                        line: { color: 'blue' },
+                        line: { color: 'blue' }
                     },
                 ]}
                 layout={{
