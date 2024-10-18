@@ -86,8 +86,8 @@ const PlotECGDiagram = ({params}) => {
                 layout={{
                     title: 'ECG Signal',
                     xaxis: {
-                        rangeslider: { visible: true },  // Enable the range slider
-                        rangeselector: {               // Add range selector buttons
+                        rangeslider: { visible: true }, 
+                        rangeselector: {            
                             buttons: [
                                 {
                                     count: 1,
