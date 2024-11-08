@@ -60,11 +60,10 @@ androidPolarH10EcgRouter.get('/patients/:patientId/measurements/:measurements', 
     })
 })
 
-androidPolarH10EcgRouter.delete('/patients/:patientId', async (req, res) => {
-    const { patientId } = req.params;
-    const measurementTimes = req.query('measurementTimes');
-    if (measurementTimes) {
-        await AndroidPolarH10Ecg.deleteMany({"key.userId": patientId, "value.measurementTimes": measurementTimes});
+androidPolarH10EcgRouter.delete('/patients/:patientId/measurements/:measurement', async (req, res) => {
+    const { patientId, measurement } = req.params;
+    if (measurement && patientId) {
+        await AndroidPolarH10Ecg.deleteMany({"key.userId": patientId, "value.measurementTimes": measurement});
     }
 
     return res.status(204).send({

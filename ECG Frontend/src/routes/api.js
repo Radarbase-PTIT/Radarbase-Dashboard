@@ -7,7 +7,8 @@ const api = {
     ecgData: '/ecg-data',
     measurements: {
         list: "/android_polar_h10_ecg/patients/:patientId/aggregate-measurements",
-        show: "/android_polar_h10_ecg/patients/:patientId/measurements/:measurement"
+        show: "/android_polar_h10_ecg/patients/:patientId/measurements/:measurement",
+        delete: "/android_polar_h10_ecg/patients/:patientId/measurements/:measurement"
     }
 }
 

@@ -23,10 +23,10 @@ const MeasurementsTable = ({projectId, subjectId}) => {
     }, [subjectId]);
 
 
-    const handleDelete = async (testId) => {
-        const response = await localAxiosInstance.delete(insertUrlParams(routes.api.medicalTest.delete, {test_id:testId}));
+    const handleDelete = async (subjectId, measurementTime) => {
+        const response = await localAxiosInstance.delete(insertUrlParams(routes.api.measurements.delete, {patientId:subjectId, measurement: measurementTime}));
         if (response.status === 200) {
-            const deletedTests = measurements.filter(test => test.test_id !== testId)
+            const deletedTests = measurements.filter()
             setMeasurements(deletedTests)
         }
     }
@@ -59,7 +59,7 @@ const MeasurementsTable = ({projectId, subjectId}) => {
                                 </button>
                                 <button
                                     className="btn btn-danger btn-sm" 
-                                    onClick={() => handleDelete(measurement)}>
+                                    onClick={() => handleDelete(subjectId, measurement)}>
                                     Delete
                                 </button>
                             </td>
