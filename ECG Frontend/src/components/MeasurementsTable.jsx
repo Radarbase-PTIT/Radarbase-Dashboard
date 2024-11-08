@@ -25,9 +25,8 @@ const MeasurementsTable = ({projectId, subjectId}) => {
 
     const handleDelete = async (subjectId, measurementTime) => {
         const response = await localAxiosInstance.delete(insertUrlParams(routes.api.measurements.delete, {patientId:subjectId, measurement: measurementTime}));
-        if (response.status === 200) {
+        if (response.status >= 200 && response.status <= 300) {
             const deletedTests = measurements.filter(measurement => {
-                console.log(measurement)
                 return measurement != measurementTime
             })
             setMeasurements(deletedTests)
