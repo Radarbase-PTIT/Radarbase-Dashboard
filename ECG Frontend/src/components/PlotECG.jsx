@@ -79,17 +79,17 @@ const PlotECGDiagram = ({params}) => {
             <Plot
                 data={[
                     {
-                        x: [...Array(measurementData.ecg.length).keys().map(item => item + 1)],
+                        x: measurementData.ecg.map((item, index) => index = index+1),
                         y: measurementData.ecg,
                         mode: 'lines',
-                        line: { color: 'blue' },
+                        line: { color: 'blue' }
                     },
                 ]}
                 layout={{
                     title: 'ECG Signal',
                     xaxis: {
-                        rangeslider: { visible: true },  // Enable the range slider
-                        rangeselector: {               // Add range selector buttons
+                        rangeslider: { visible: true }, 
+                        rangeselector: {            
                             buttons: [
                                 {
                                     count: 1,
