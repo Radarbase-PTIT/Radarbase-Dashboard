@@ -40,7 +40,10 @@ const PlotECGDiagram = ({params}) => {
             );
 
             if (response.success) {
-                setMeasurementData(response.data);
+                setMeasurementData({
+                    ecg: response.data.ecg.filter((_,index) => index >= 570),
+                    heartRates: response.data.heartRates.filter((_, index) => index >= 570)
+                });
                 //check need to update or not
                 setMeasurementEcgLength(prevState => {
                     if (response.data.heartRates.length === prevState) {
